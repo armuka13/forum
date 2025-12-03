@@ -1,0 +1,19 @@
+<x-layout>
+    <!-- Displaying the post -->
+    <div class="max-w-7xl mx-auto px-4 py-8 bg-white shadow rounded-md mt-6">
+        <b><h1>{{ $post->user->name }}</h1></b>        
+        <b><h2>{{ $post->title }}</h2></b>
+        <hr>
+        <p>{{ $post->content }}</p>
+    </div>
+    <!-- Showing comments -->
+     <div class="max-w-7xl mx-auto px-4 py-8 bg-white shadow rounded-md mt-6">
+        @foreach ($comments as $comment)
+            <div>
+                <b><h3>{{ $comment->user->name }}</h3></b>
+                <p>{{ $comment->content }}</p>
+                <hr><br>
+            </div>
+        @endforeach
+     </div>
+</x-layout>
