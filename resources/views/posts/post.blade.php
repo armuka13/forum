@@ -37,8 +37,8 @@
                     <div class="flex items-center">
                     <button id="postBtn"
                             type="submit"
-                            class="mt-1 text-blue-500 font-bold text-3xl transition-all duration-200 opacity-80 hover:opacity-100">
-                        ↑
+                            class="mt-1 text-white font-bold text-3xl bg-blue-500 transition-all duration-200 opacity-80 hover:opacity-100">
+                        &nbsp↑&nbsp 
                     </button>
                     </div>
                 </form>
