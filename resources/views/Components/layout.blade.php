@@ -15,9 +15,12 @@
                 <div>
                     <x-nav-link href="/home" :active="request()->is('home')" >Home</x-nav-link>
                     <x-nav-link href="/posts" :active="request()->is('posts')">Posts</x-nav-link>
+<<<<<<< HEAD
                     @auth
                         <x-nav-link href="/create-post" :active="request()->is('create-post')">Ask</x-nav-link>
                     @endauth
+=======
+>>>>>>> 3aff404677c0f5c79d07e8827f2a821a3697ef0a
                 </div>
             </nav>
             <div>
