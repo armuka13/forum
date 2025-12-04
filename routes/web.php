@@ -14,6 +14,8 @@ Route::get('/home', function () {
 //Post routes
 Route::get('/posts', [PostController::class, 'show']);
 Route::get('/posts/{post}', [PostController::class, 'expand']);
+Route::get('/create-post', [PostController::class, 'create']);
+Route::post('/posts', [PostController::class, 'store'])->middleware('auth');
 
 //Auth
 
@@ -23,3 +25,5 @@ Route::post('/register', [RegisteredUserController::class, 'store']);
 Route::get('/login', [SessionController::class, 'create'])->name('login');
 Route::post('/login', [SessionController::class, 'store']);
 Route::post('/logout', [SessionController::class, 'destroy']);
+
+
