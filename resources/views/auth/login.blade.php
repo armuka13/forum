@@ -15,6 +15,7 @@
         <label for="email" class="block text-sm/6 font-medium text-black">Email address</label>
         <div class="mt-2">
           <x-form-input id="email" type="email" name="email" required placeholder="johndoe@example.com"></x-form-input>
+          <x-form-error name="email" />
 
         </div>
       </div>
@@ -28,6 +29,7 @@
         </div>
         <div class="mt-2">
           <x-form-input id="password" type="password" name="password" required></x-form-input>
+          <x-form-error name="password" />
         </div>
       </div>
 

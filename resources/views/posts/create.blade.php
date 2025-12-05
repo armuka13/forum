@@ -13,6 +13,8 @@
                 <label for="title" class="block text-sm font-medium text-gray-900">Title</label>
                 <div class="mt-2">
                     <x-form-input id="title" name="title" required class="w-full"/>
+                    <x-form-error name="title" />
+
                 </div>
             </div>
 
@@ -32,6 +34,8 @@
                             focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500
                             sm:text-sm/6"
                     ></textarea>
+                    <x-form-error name="content" />
+
                 </div>
             </div>
 

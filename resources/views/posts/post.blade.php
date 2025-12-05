@@ -27,9 +27,12 @@
                                 min-h-12 max-h-32
                                 scrollbar-hide"
                         style="height: 48px;"
+                        
                         oninput="autoGrow(this);
                                 togglePostButton(this);"
                         ></textarea>
+                    <x-form-error name="content" />
+
                     </div>
                     </div>
 
