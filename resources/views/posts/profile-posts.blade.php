@@ -12,6 +12,7 @@
                 </a>
                 <div class="ml-4">
                     @csrf
+                    @can('edit', $post)
                     <form action="/posts/{{ $post->id }}/edit" method="GET" class="inline">
                         <button type="submit"
                             class="rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold text-black
@@ -21,6 +22,7 @@
                             Edit
                         </button>
                     </form>
+                    @endcan
                 </div>
             </div>
         @endforeach

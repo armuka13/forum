@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
@@ -27,12 +28,13 @@ class PostController extends Controller
         ]);
     }
 
-    //accessing you own posts
-    public function self(){
-        $id = Auth::id();
+    //accessing your own posts
+    public function self(User $user){
+        $id = $user->id;
         $posts = Post::where('user_id', $id)->latest()->paginate(3);
-        return view('posts.your-posts', compact('posts'));
+        return view('posts.profile-posts', compact('posts'));
     }
+
 
     //creating a post
     public function create(){
@@ -88,6 +90,6 @@ class PostController extends Controller
     
     $post->delete();
     
-    return redirect('/your-posts');
+    return redirect('/profile-posts');
 }
 }
