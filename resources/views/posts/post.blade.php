@@ -10,6 +10,8 @@
      <div class="max-w-7xl mx-auto px-4 py-8 bg-white shadow rounded-md mt-6" >
         <!-- Posting a comment -->
         @auth
+            <div>
+            </div>
             <div class="max-w-2xl mx-auto px-4 py-6">
                 <form class="flex items-start space-x-3" method="POST" action="">
                     @csrf
@@ -27,7 +29,7 @@
                                 min-h-12 max-h-32
                                 scrollbar-hide"
                         style="height: 48px;"
-                        
+                        required  
                         oninput="autoGrow(this);
                                 togglePostButton(this);"
                         ></textarea>

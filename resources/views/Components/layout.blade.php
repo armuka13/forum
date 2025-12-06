@@ -17,6 +17,7 @@
                     <x-nav-link href="/posts" :active="request()->is('posts')">Posts</x-nav-link>
                     @auth
                         <x-nav-link href="/create-post" :active="request()->is('create-post')">Ask</x-nav-link>
+                        <x-nav-link href="/your-posts" :active="request()->is('your-posts')">Your Posts</x-nav-link>
                     @endauth
                 </div>
             </nav>

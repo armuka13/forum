@@ -26,6 +26,6 @@ class RegisteredUserController extends Controller
     //log in 
     Auth::login($user);
     //redirect
-    return redirect('/posts');
+    return redirect('/home');
 }   
 }

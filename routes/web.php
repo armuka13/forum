@@ -17,6 +17,10 @@ Route::get('/posts', [PostController::class, 'show']);
 Route::get('/posts/{post}', [PostController::class, 'expand']);
 Route::get('/create-post', [PostController::class, 'create']);
 Route::post('/posts', [PostController::class, 'store'])->middleware('auth');
+Route::get('/your-posts', [PostController::class, 'self'])->middleware('auth');
+Route::get('/posts/{post}/edit', [PostController::class, 'edit'])->middleware('auth');
+Route::patch('/posts/{post}', [PostController::class, 'update'])->middleware('auth');;
+Route::delete('/posts/{post}', [PostController::class, 'destroy'])->middleware('auth');
 
 //Auth
 
