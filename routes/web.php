@@ -41,3 +41,6 @@ Route::post('/posts/{post}', [CommentController::class, 'store']);
 
 //User routes
 Route::get('/profile/{user}', [UserController::class, 'show']);
+Route::get('/settings', [UserController::class, 'settings'])->middleware('auth')->name('settings');
+Route::patch('/settings/profile', [UserController::class, 'updateProfile'])->middleware('auth');
+Route::patch('/settings/password', [UserController::class, 'updatePassword'])->middleware('auth');
