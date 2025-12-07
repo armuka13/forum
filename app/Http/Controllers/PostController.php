@@ -13,12 +13,19 @@ class PostController extends Controller
     
     //displaying all the posts to guests and users
     public function show(){
-        $posts = Post::with('user')->latest()->paginate(3);
-
-        return view('posts.show', [
-            'posts' => $posts
-        ]);
+    $query = Post::with('user')->latest();
+    
+    if(request('search')){
+        $query->where('title', 'like', '%' . request('search') . '%')
+              ->orWhere('content', 'like', '%' . request('search') . '%');
     }
+    
+    $posts = $query->paginate(3);
+
+    return view('posts.show', [
+        'posts' => $posts
+    ]);
+}
 
     //displaying a specific post
     public function expand(Post $post){
