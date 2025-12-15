@@ -15,8 +15,8 @@ class UserController extends Controller
     //show user profile
     public function show(User $user){
         $id = $user->id;
-        $posts = Post::where('user_id', $id);
-        $comments = Comment::where('user_id', $id);
+        $posts = Post::where('user_id', $id)->get();
+        $comments = Comment::where('user_id', $id)->get();
         return view('User.profile', [
             'user' => $user,
             'posts' => $posts,
@@ -45,9 +45,9 @@ class UserController extends Controller
             'password' => ['required', Password::min(8), 'confirmed'],
         ]);
 
-        Auth::user()->update([
-            'password' => Hash::make($request->password),
-        ]);
+        $user = Auth::user();
+        $user->password = Hash::make($request->password);
+        $user->save();
 
         return redirect('/settings')->with('success', 'Password changed successfully');
     }
