@@ -7,7 +7,7 @@
 
         <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
             @auth
-                <a href="/create-post" class="inline-flex items-center px-5 py-3 bg-green-600 text-white rounded-md hover:bg-green-700">Ask a Question</a>
+                <a href="/posts/create" class="inline-flex items-center px-5 py-3 bg-green-600 text-white rounded-md hover:bg-green-700">Ask a Question</a>
                 <a href="/profile/{{ auth()->user()->id }}" class="text-sm text-gray-700 hover:underline">View Profile</a>
             @else
                 <a href="/register" class="inline-flex items-center px-5 py-3 bg-indigo-600 text-white rounded-md hover:bg-indigo-700">Get Started</a>
