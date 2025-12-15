@@ -97,6 +97,6 @@ class PostController extends Controller
     
     $post->delete();
     
-    return redirect('/profile-posts');
+    return redirect('/posts');
 }
 }

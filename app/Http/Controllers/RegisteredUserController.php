@@ -16,7 +16,7 @@ class RegisteredUserController extends Controller
     public function store(){
     $attributes = request()->validate([
         'name' => ['required'],
-        'email' => ['required', 'email'],
+        'email' => ['required', 'email', 'unique:users,email'],
         'password' => ['required', Password::min(8)->letters()->numbers(), 'confirmed'],
     ]);
     // Hash password explicitly to be safe

@@ -15,7 +15,7 @@
             <p class="text-md text-gray-600 mb-4">Comments: {{ $user->comments()->count() }}</p>
 
             <p class="text-md text-gray-600 mb-4">A member since: {{ $user->created_at->format('d-m-y') }}</p>
-            <a href="/your-posts/{{ $posts->first()->user->id }}" class="inline-block px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition">
+            <a href="/your-posts/{{ $user->id }}" class="inline-block px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition">
                 View Posts
             </a>
         </div>
