@@ -9,6 +9,10 @@
     <!-- Showing comments -->
      <div class="max-w-7xl mx-auto px-4 py-8 bg-white shadow rounded-md mt-6" >
         <!-- Posting a comment -->
+        @guest
+          <b><p class="text-red-500">LOG IN TO COMMENT</p></b>
+          <br><hr>
+        @endguest
         @auth
             <div>
             </div>

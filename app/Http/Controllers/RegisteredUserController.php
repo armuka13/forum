@@ -17,7 +17,7 @@ class RegisteredUserController extends Controller
     $attributes = request()->validate([
         'name' => ['required'],
         'email' => ['required', 'email'],
-        'password' => ['required', Password::min(8), 'confirmed'],
+        'password' => ['required', Password::min(8)->letters()->numbers(), 'confirmed'],
     ]);
     // Hash password explicitly to be safe
     $attributes['password'] = Hash::make($attributes['password']);
