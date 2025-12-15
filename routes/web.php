@@ -37,6 +37,8 @@ Route::post('/logout', [SessionController::class, 'destroy']);
 
 //Comment routes
 Route::post('/posts/{post}', [CommentController::class, 'store']);
+Route::put('/comments/{comment}', [CommentController::class, 'update'])->middleware('auth');
+Route::delete('/comments/{comment}', [CommentController::class, 'destroy'])->middleware('auth');
 
 
 //User routes

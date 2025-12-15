@@ -55,11 +55,45 @@
             <br><br>
         @endauth
         @foreach ($comments as $comment)
-            <div>
-                <b><h3>{{ $comment->user->name }}</h3></b>
-                <p>{{ $comment->content }}</p>
-                <hr><br>
+          <div class="mb-4" id="comment-{{ $comment->id }}">
+            <div class="flex justify-between items-start">
+              <div class="flex-1">
+                <h3 class="font-bold">{{ $comment->user->name }}</h3>
+
+                <!-- Display mode -->
+                <div id="comment-display-{{ $comment->id }}" class="mt-1">
+                  <p class="comment-content">{{ $comment->content }}</p>
+                </div>
+
+                <!-- Edit mode (hidden) -->
+                <div id="comment-edit-{{ $comment->id }}" class="mt-1 hidden">
+                  <form method="POST" action="/comments/{{ $comment->id }}">
+                    @csrf
+                    @method('PUT')
+                    <textarea name="content" rows="3" class="w-full border rounded p-2" required>{{ $comment->content }}</textarea>
+                    <div class="mt-2 flex gap-2">
+                      <button type="submit" class="px-3 py-1 bg-green-600 text-white rounded">Save</button>
+                      <button type="button" onclick="closeEdit({{ $comment->id }})" class="px-3 py-1 bg-gray-200 rounded">Cancel</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+
+              @auth
+                @if(auth()->id() === $comment->user_id)
+                  <div class="flex items-start gap-3 ml-4">
+                    <button type="button" onclick="openEdit({{ $comment->id }})" class="text-sm text-indigo-600 hover:underline">Edit</button>
+                    <form method="POST" action="/comments/{{ $comment->id }}" class="inline m-0">
+                      @csrf
+                      @method('DELETE')
+                      <button type="submit" class="text-sm text-red-600 hover:underline" onclick="return confirm('Delete this comment?')">Delete</button>
+                    </form>
+                  </div>
+                @endif
+              @endauth
             </div>
+            <hr class="my-3">
+          </div>
         @endforeach
      </div>
 </x-layout>
@@ -93,3 +127,17 @@
     display: none;
   }
 </style>
+
+<script>
+  function openEdit(id){
+    document.getElementById('comment-display-' + id).classList.add('hidden');
+    document.getElementById('comment-edit-' + id).classList.remove('hidden');
+    const textarea = document.querySelector('#comment-edit-' + id + ' textarea');
+    if(textarea) textarea.focus();
+  }
+
+  function closeEdit(id){
+    document.getElementById('comment-edit-' + id).classList.add('hidden');
+    document.getElementById('comment-display-' + id).classList.remove('hidden');
+  }
+</script>
